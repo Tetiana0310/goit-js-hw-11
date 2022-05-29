@@ -29,3 +29,6 @@ flex-direction: column;
        outline: none;
        padding: 5px 10px 5px 10px;
    }     
+   .is-hidden{
+       display: none;
+   }

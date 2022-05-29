@@ -54,7 +54,7 @@ function onLastCards() {
   }
 }
     function onLoadBtn() {
-  apiService.fetchData().then(({ hits }) => {
+  apiService.fetchCards().then(({ hits }) => {
     if (pages === apiService.nowPage()) {
       loadBtn.classList.add('is-hidden');
     }

@@ -47,13 +47,22 @@ function onSearch(evt) {
 function resetContent() {
   gallery.innerHTML = '';
 }
+
+function hideLoadBtn() {
+    refs.loadBtn.classList.add('is-hidden');
+}
 function onLastCards() {
-        if (photosApiService.totalHits <= 40) {
-    hideShowMoreBtn();
-  Notify.info("We're sorry, but you've reached the end of search results");
+        if (totalHits <= 40) {
+    hideLoadBtn();
+  Notify.failure("We're sorry, but you've reached the end of search results");
     return;
   }
 }
+// const totalPages = Math.floor(data.totalHits / perPage)
+//       if (page > totalPages) {
+//         refs.btnLoad.classList.add('is-hidden') 
+//         Notify.failure("We're sorry, but you've reached the end of search results.")
+//       }
     function onLoadBtn() {
   apiService.fetchCards().then(({ hits }) => {
     if (pages === apiService.nowPage()) {

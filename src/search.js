@@ -38,6 +38,7 @@ function onSearch(evt) {
       loadBtn.classList.remove('is-hidden');
       if (pages === 1) {
         loadBtn.classList.add('is-hidden');
+        scroll()
         onLastCards();
       }
     })
@@ -49,20 +50,15 @@ function resetContent() {
 }
 
 function hideLoadBtn() {
-    refs.loadBtn.classList.add('is-hidden');
+    loadBtn.classList.add('is-hidden');
 }
 function onLastCards() {
-        if (totalHits <= 40) {
+        if (apiSService.totalHits <= 40) {
     hideLoadBtn();
   Notify.failure("We're sorry, but you've reached the end of search results");
     return;
   }
 }
-// const totalPages = Math.floor(data.totalHits / perPage)
-//       if (page > totalPages) {
-//         refs.btnLoad.classList.add('is-hidden') 
-//         Notify.failure("We're sorry, but you've reached the end of search results.")
-//       }
     function onLoadBtn() {
   apiService.fetchCards().then(({ hits }) => {
     if (pages === apiService.nowPage()) {
@@ -70,4 +66,14 @@ function onLastCards() {
     }
     getPicture(hits);
   });
+}
+
+function scroll() {
+    const { height: cardHeight } = document
+    .querySelector(".gallery")
+    .firstElementChild.getBoundingClientRect();
+        window.scrollBy({
+        top: cardHeight * 2,
+        behavior: "smooth",
+});
 }

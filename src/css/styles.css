@@ -83,5 +83,8 @@ img {
             margin: auto;
             margin-top: 20px;
             width: 100px;
+            position: relative;
+                left: 50%;
+                transform: translate(-50%, 0);
         }
     

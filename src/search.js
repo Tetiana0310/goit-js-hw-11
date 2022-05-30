@@ -8,6 +8,7 @@ const apiService = new ApiService
 const form = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more');
+let pages = null;
 
 form.addEventListener('submit', onSearch);
 loadBtn.addEventListener('click', onLoadBtn);

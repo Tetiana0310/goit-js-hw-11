@@ -17,21 +17,21 @@ form.addEventListener('submit', onSearch);
 function onSearch(event) {
     event.preventDefault();
 
-    const queryInput = event.currentTarget.elements.searchQuery;  // Враховуючи ім'я "searchQuery"
+    const queryInput = event.currentTarget.elements.searchQuery;  
 
-    if (!queryInput) {
-        iziToast.error({
-            message: 'Поле введення не знайдено!',
-            position: 'topRight',
-        });
-        return;
-    }
+    // if (!queryInput) {
+    //     iziToast.error({
+    //         message: 'We cannot find query',
+    //         position: 'topRight',
+    //     });
+    //     return;
+    // }
 
     const query = queryInput.value.trim();
 
     if (!query) {
         iziToast.error({
-            message: 'Будь ласка, введіть пошуковий запит!',
+            message: 'Please, enter you request',
             position: 'topRight',
         });
         return;
@@ -50,12 +50,12 @@ function onSearch(event) {
                 });
                 return;
             }
-            getPicture(data.hits);  // Виклик функції для рендерингу зображень
+            getPicture(data.hits);  
         })
         .catch(error => {
             hideLoader();
             iziToast.error({
-                message: `Помилка: ${error.message}`,
+                message: `Error: ${error.message}`,
                 position: 'topRight',
             });
             console.log(error);
